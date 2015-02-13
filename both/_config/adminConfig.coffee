@@ -47,6 +47,7 @@ AdminConfig =
     }
   dashboard:
     homeUrl: '/dashboard'
+    skin: 'blue'
   autoForm:
     omitFields: ['createdAt', 'updatedAt']
 

@@ -41,9 +41,14 @@ Router.map ->
         @redirect '/dashboard'
       @next()
 
-
 Router.waitOn ->
-  Meteor.subscribe 'user'
+  [
+    Meteor.subscribe 'user'
+    Meteor.subscribe 'events'
+    Meteor.subscribe 'helpertasks'
+    Meteor.subscribe 'helpertaskTypes'
+    Meteor.subscribe 'skills'
+  ]
 
 prepareView = ->
   window.scrollTo(0,0)
