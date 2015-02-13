@@ -37,6 +37,14 @@ Router.map ->
       if not Config.username or (Meteor.userId() and Meteor.user().username)
         @redirect '/dashboard'
       @next()
+  @route "eventsplan",
+    path: "/events/plan"
+    waitOn: ->
+      [
+        Meteor.subscribe 'events'
+      ]
+    data: ->
+      Events: Events.find().fetch()
 
 Router.waitOn ->
   [

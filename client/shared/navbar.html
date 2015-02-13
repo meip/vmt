@@ -12,8 +12,23 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				{{#if currentUser}}
+				<ul class="nav navbar-nav navbar-left">
+					{{#if isInRole 'member'}}
+						<li>
+								<a class="close-navbar" href="/helpertasks">Eigene Helfereins&auml;tze</a>
+						</li>
+						<li>
+								<a class="close-navbar" href="/events">Events anzeigen</a>
+						</li>
+					{{/if}}
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					{{> notificationsDropdown}}
+					{{#if isInRole 'planer'}}
+              <li>
+                  <a class="close-navbar" href="/events/plan">Event planen</a>
+              </li>
+					{{/if}}
 					{{#if isInRole 'admin'}}
 					<li><a href="{{pathFor 'adminDashboard'}}">Admin</a></li> 
 					{{/if}}
