@@ -9,4 +9,3 @@ Tracker.autorun ->
 	#Subscriptions
 	Meteor.subscribe 'user'
 	Meteor.subscribe 'users'
-	Meteor.subscribe 'userPicture'

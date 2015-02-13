@@ -11,7 +11,6 @@ Router.configure
 Router.map ->
   @route "home",
     path: "/"
-    layoutTemplate: "homeLayout"
   @route "dashboard",
     path: "/dashboard"
     waitOn: ->
@@ -31,8 +30,6 @@ Router.map ->
       Posts: Posts.find({},{sort: {createdAt: -1}}).fetch()
   @route "profile",
     path: "/profile"
-    waitOn: ->
-      Meteor.subscribe 'profilePictures'
   @route "account",
     path: "/account"
     onStop: ->
@@ -47,8 +44,6 @@ Router.map ->
 
 Router.waitOn ->
   Meteor.subscribe 'user'
-  Meteor.subscribe 'userPicture'
-
 
 prepareView = ->
   window.scrollTo(0,0)
