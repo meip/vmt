@@ -1,44 +1,56 @@
 AdminConfig =
-	name: Config.name
-	collections : 
-		Posts: {
-			color: 'red'
-			icon: 'pencil'
-			auxCollections: ['Attachments']
-			tableColumns: [
-              {label: 'Title',name:'title'}
-              {label:'User',name:'owner',collection:'Users'}
-            ]
-		}
-		Comments: {
-			color: 'green'
-			icon: 'comments'
-			auxCollections: ['Posts']
-			tableColumns: [
-              {label: 'Content';name:'content'}
-              {label:'Post';name:'doc',collection: 'Posts',collection_property:'title'}
-              {label:'User',name:'owner',collection:'Users'}
-            ]
-		}
-	dashboard:
-		homeUrl: '/dashboard'
-		# widgets: [
-		# 	{
-		# 		template: 'adminCollectionWidget'
-		# 		data:
-		# 			collection: 'Posts'
-		# 			class: 'col-lg-3 col-xs-6'
-		# 	}
-		# 	{
-		# 		template: 'adminUserWidget'
-		# 		data:
-		# 			class: 'col-lg-3 col-xs-6'
-		# 	}
-		# ]
-	autoForm: 
-	        omitFields: ['createdAt', 'updatedAt']
+  name: Config.name
+  collections:
+    Events: {
+      color: 'blue'
+      icon: 'trophy'
+      auxCollections: ['Helpertasks']
+      tableColumns: [
+        {label: 'User', name: 'owner', collection: 'Users'}
+        {label: 'Helpertasks', name: 'helpertasks', collection: 'Helpertasks', collection_property: 'comment'}
+      ]
+    }
+    Helpertasks: {
+      color: 'yellow'
+      icon: 'tasks'
+      auxCollections: ['Events']
+      tableColumns: [
+        {label: 'User', name: 'owner', collection: 'Users'}
+        {label: 'Event', name: 'event', collection: 'Events', collection_property: 'title'}
+      ]
+    }
+    Teams: {
+      color: 'green'
+      icon: 'users'
+      auxCollections: ['Users']
+      tableColumns: [
+        {label: 'Title', name: 'title'}
+      ]
+    }
+    HelpertaskTypes: {
+      color: 'red'
+      icon: 'pencil'
+      tableColumns: [
+        {label: 'Title', name: 'title'}
+        {label: 'Description', name: 'description'}
+        {label: 'Skills', name: 'skills', collection: 'Skills', collection_property: 'title'}
+      ]
+    }
+    Skills: {
+      color: 'red'
+      icon: 'pencil'
+      auxCollections: ['HelpertaskTypes']
+      tableColumns: [
+        {label: 'Title', name: 'title'}
+        {label: 'Description', name: 'description'}
+      ]
+    }
+  dashboard:
+    homeUrl: '/dashboard'
+  autoForm:
+    omitFields: ['createdAt', 'updatedAt']
 
 if Meteor.isClient
-	window.AdminConfig = AdminConfig
+  window.AdminConfig = AdminConfig
 else if Meteor.isServer
-	global.AdminConfig = AdminConfig
+  global.AdminConfig = AdminConfig

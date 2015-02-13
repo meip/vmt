@@ -25,7 +25,6 @@ Schemas.UserProfile = new SimpleSchema(
 )
 
 Schemas.User = new SimpleSchema(
-
   username:
     type: String
     regEx: /^[a-z0-9A-Z_]{3,15}$/
@@ -42,8 +41,15 @@ Schemas.User = new SimpleSchema(
   "emails.$.verified":
     type: Boolean
 
-  createdAt:
-    type: Date
+  teams:
+    type: [String]
+    regEx: SimpleSchema.RegEx.Id
+    optional: true
+    autoform:
+      options: ->
+        _.map Teams.find().fetch(), (team)->
+          label: team.title
+          value: team._id
 
   profile:
     type: Schemas.UserProfile
@@ -58,6 +64,19 @@ Schemas.User = new SimpleSchema(
     type: [String]
     blackbox: true
     optional: true
+
+  createdAt:
+    type: Date
+    autoValue: ->
+      if this.isInsert
+        new Date()
+
+  updatedAt:
+    type: Date
+    optional: true
+    autoValue: ->
+      if this.isUpdate
+        new Date()
 )
 
 Meteor.users.attachSchema Schemas.User
