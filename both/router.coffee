@@ -15,10 +15,7 @@ Router.map ->
     path: "/dashboard"
     waitOn: ->
       [
-        Meteor.subscribe 'posts'
-        Meteor.subscribe 'favorites'
-        Meteor.subscribe 'comments'
-        Meteor.subscribe 'attachments'
+        Meteor.subscribe 'events'
       ]
     onBeforeAction: ->
       url = Session.get 'redirectToAfterSignIn'
@@ -27,7 +24,7 @@ Router.map ->
         Router.go url
       @next()
     data: ->
-      Posts: Posts.find({},{sort: {createdAt: -1}}).fetch()
+      Events: Events.find().fetch()
   @route "profile",
     path: "/profile"
   @route "account",

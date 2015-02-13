@@ -1,10 +1,3 @@
-Meteor.publish 'posts', ->
-  Posts.find()
-
-Meteor.publish 'attachments', ->
-  Attachments.find()
-
-
 Meteor.publish 'events', ->
   Events.find()
 
