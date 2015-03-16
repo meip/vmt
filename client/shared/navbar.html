@@ -30,6 +30,11 @@
               </li>
 					{{/if}}
 					{{#if isInRole 'admin'}}
+              <li>
+                  <a class="close-navbar" href="/member/import">Member import</a>
+              </li>
+					{{/if}}
+					{{#if isInRole 'admin'}}
 					<li><a href="{{pathFor 'adminDashboard'}}">Admin</a></li> 
 					{{/if}}
 					<li class="dropdown hidden-xs">

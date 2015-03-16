@@ -45,6 +45,14 @@ Router.map ->
       ]
     data: ->
       Events: Events.find().fetch()
+  @route "memberimport",
+    path: "/member/import"
+    waitOn: ->
+      [
+        Meteor.subscribe 'user'
+      ]
+    data: ->
+      Users: Meteor.users.find().fetch()
 
 Router.waitOn ->
   [
