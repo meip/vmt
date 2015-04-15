@@ -1,11 +1,21 @@
 <template name="memberimport">
     <div class="container">
         <h1>Import members</h1>
-        {{log}}
+      {{log}}
         <button type="button" class="btn btn-danger js-import-member">Import</button>
-        {{> eventstemplate}}
-        {{#each Users}}
-            {{_id}}
+      {{#each this.Users}}
+        {{_id}} -
+        {{username}} -
+        {{#each emails}}
+          {{address}}
         {{/each}}
+        {{profile.firstName}} -
+        {{profile.lastName}} -
+        {{profile.birthday}} -
+        {{#each profile.phones}}
+            ({{countryCode}})-{{number}}
+        {{/each}}
+          <br/>
+      {{/each}}
     </div>
 </template>
