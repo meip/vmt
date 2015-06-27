@@ -4,7 +4,7 @@
 @Config =
 
 	# Basic Details
-	name: 'My App'
+	name: 'VMT'
 	title: ->
 			TAPi18n.__ 'configTitle'
 	subtitle: ->
@@ -27,30 +27,27 @@
 	dateFormat: 'D/M/YYYY'
 
 	# Meta / Extenrnal content
-	privacyUrl: 'http://meteorfactory.io'
-	termsUrl: 'http://meteorfactory.io'
+	privacyUrl: Meteor.absoluteUrl()
+	termsUrl: Meteor.absoluteUrl()
 
 	# For email footers
 	legal:
-		address: 'Jessnerstrasse 18, 12047 Berlin'
-		name: 'Meteor Factory'
-		url: 'http://benjaminpeterjones.com'
+		address: 'Postfach 317, 8630 Rüti'
+		name: 'FB Riders'
+		url: 'http://www.fbriders.ch'
 
-	about: 'http://meteorfactory.io'
-	blog: 'http://learn.meteorfactory.io'
+	about: 'http://philippmeier.ch'
+	blog: 'http://philippmeier.ch/blog'
 
 	socialMedia:
-		facebook:
-			url: 'http://facebook.com/benjaminpeterjones'
-			icon: 'facebook'
 		twitter:
-			url: 'http://twitter.com/BenPeterJones'
+			url: 'http://twitter.com/vilibm'
 			icon: 'twitter'
 		github:
-			url: 'http://github.com/yogiben'
+			url: 'http://github.com/meip'
 			icon: 'github'
 		info:
-			url: 'http://meteorfactory.io'
+			url: 'http://philippmeier.ch'
 			icon: 'link'
 
 	#Routes

@@ -1,5 +1,5 @@
 @Config =
-	name: 'My App'
+	name: 'VMT'
 	title: ->
 			TAPi18n.__ 'configTitle'
 	subtitle: ->
@@ -10,15 +10,15 @@
 		@name + ' - Copyright ' + new Date().getFullYear()
 	emails:
 		from: 'noreply@' + Meteor.absoluteUrl()
-	blog: 'http://benjaminpeterjones.com'
-	about: 'http://benjaminpeterjones.com'
+	about: 'http://philippmeier.ch'
+	blog: 'http://philippmeier.ch/blog'
 	username: false
 	homeRoute: '/dashboard'
 	socialMedia:
 		[
-			['http://facebook.com/benjaminpeterjones','facebook']
-			['http://twitter.com/BenPeterJones','twitter']
-			['http://github.com/yogiben','github']
+			['http://philippmeier.ch','link']
+			['http://twitter.com/vilibm','twitter']
+			['http://github.com/meip','github']
 		]
 
 Avatar.options =

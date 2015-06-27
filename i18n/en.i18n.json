@@ -2,8 +2,8 @@
 
 	/*Config*/
 	"configName": "My App",
-	"configTitle": "Make Meteor Apps. Fast.",
-	"configSubtitle": "Create beautiful and functioning Meteor apps really quick",
+	"configTitle": "Volunteer Management Tool",
+	"configSubtitle": "Organize volunteers for your events.",
 	
 	/*Home*/
 	"getstarted": "Get Started",
