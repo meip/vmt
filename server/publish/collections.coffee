@@ -1,8 +1,11 @@
-# You'll want to replace these functions. They publish the whole
-# collection which is problematic after your app grows
+Meteor.publish 'events', ->
+  Events.find()
 
-Meteor.publish 'posts', ->
-	Posts.find()
+Meteor.publish 'helpertasks', ->
+  Helpertasks.find()
 
-Meteor.publish 'attachments', ->
-	Attachments.find()
+Meteor.publish 'helpertaskTypes', ->
+  HelpertaskTypes.find()
+
+Meteor.publish 'skills', ->
+  Skills.find()

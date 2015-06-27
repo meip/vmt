@@ -7,9 +7,34 @@ Router.map ->
     path: "/dashboard"
     waitOn: ->
       [
-        subs.subscribe 'posts'
-        subs.subscribe 'comments'
-        subs.subscribe 'attachments'
+        subs.subscribe 'events'
       ]
     data: ->
-      posts: Posts.find({},{sort: {createdAt: -1}}).fetch()
+      events: Events.find().fetch()
+
+  @route "eventsplan",
+    path: "/events/plan"
+    waitOn: ->
+      [
+        Meteor.subscribe 'events'
+      ]
+    data: ->
+      events: Events.find().fetch()
+
+  @route "memberimport",
+    path: "/member/import"
+    waitOn: ->
+      [
+        Meteor.subscribe 'user'
+      ]
+    data: ->
+      members: Meteor.users.find().fetch()
+
+Router.waitOn ->
+  [
+    Meteor.subscribe 'user'
+    Meteor.subscribe 'events'
+    Meteor.subscribe 'helpertasks'
+    Meteor.subscribe 'helpertaskTypes'
+    Meteor.subscribe 'skills'
+  ]

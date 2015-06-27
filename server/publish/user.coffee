@@ -1,8 +1,5 @@
-Meteor.publishComposite 'user', ->
-  find: ->
-    Meteor.users.find _id: @userId
-  children: [
-    find: (user) ->
-      _id = user.profile?.picture or null
-      ProfilePictures.find _id: _id
-    ]
+Meteor.publish 'user', ->
+	Meteor.users.find this.userId
+
+Meteor.publish 'users', ->
+	Meteor.users.find {}, {fields: {profile: 1, emails: 1}}
