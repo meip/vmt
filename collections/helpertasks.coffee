@@ -1,6 +1,6 @@
 @Helpertasks = new Meteor.Collection('helpertasks');
-Schemas.Helpertasks = new SimpleSchema
 
+Schemas.Helpertasks = new SimpleSchema
   description:
     type: String
     autoform:
@@ -26,7 +26,8 @@ Schemas.Helpertasks = new SimpleSchema
           value: helpertaskType._id
 
   event:
-    type: Schemas.Events
+    type: String
+    regEx: SimpleSchema.RegEx.Id
     autoform:
       options: ->
         _.map Events.find().fetch(), (event)->
@@ -38,7 +39,10 @@ Schemas.Helpertasks = new SimpleSchema
     regEx: SimpleSchema.RegEx.Id
     autoValue: ->
       if this.isInsert
-        Meteor.userId()
+        try
+          Meteor.userId()
+        catch error
+          Meteor.users.findOne('emails.address': 'admin@fbriders.ch')._id
     autoform:
       options: ->
         _.map Meteor.users.find().fetch(), (user)->
@@ -59,3 +63,11 @@ Schemas.Helpertasks = new SimpleSchema
         new Date()
 
 Helpertasks.attachSchema(Schemas.Helpertasks)
+
+Helpertasks.helpers
+  helpertaskType: ->
+    HelpertaskTypes.findOne(this.helpertaskType)
+  event: ->
+    Events.findOne(this.event)
+  ownerName: ->
+    Meteor.users.findOne(this.owner).username

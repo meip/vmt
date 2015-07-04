@@ -48,13 +48,15 @@ Schemas.Events = new SimpleSchema
           label: helpertask.title
           value: helpertask._id
 
-
   owner:
     type: String
     regEx: SimpleSchema.RegEx.Id
     autoValue: ->
       if this.isInsert
-        Meteor.userId()
+        try
+          Meteor.userId()
+        catch error
+          Meteor.users.findOne('emails.address': 'admin@fbriders.ch')._id
     autoform:
       options: ->
         _.map Meteor.users.find().fetch(), (user)->
@@ -75,3 +77,7 @@ Schemas.Events = new SimpleSchema
         new Date()
 
 Events.attachSchema(Schemas.Events)
+
+Events.helpers
+  helpertaskDescription: ->
+    Helpertasks.findOne(@doc)?.description

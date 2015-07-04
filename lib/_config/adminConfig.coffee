@@ -6,17 +6,23 @@
 			icon: 'trophy'
 			auxCollections: ['Helpertasks']
 			tableColumns: [
-				{label: 'User', name: 'owner', collection: 'Users'}
-				{label: 'Helpertasks', name: 'helpertasks', collection: 'Helpertasks', collection_property: 'comment'}
+				{label: 'Title', name: 'title'}
+				{label: 'Location', name: 'location'}
+				{label: 'Start Date', name: 'startDate'}
+				{label: 'End Date', name: 'endDate'}
+				{label: 'Helpertasks', name: 'helpertaskDescription()', collection: 'Helpertasks', collection_property: 'description'}
 			]
 		}
 		Helpertasks: {
 			color: 'yellow'
 			icon: 'tasks'
-			auxCollections: ['Events']
+			auxCollections: ['Events', 'HelpertaskTypes']
 			tableColumns: [
-				{label: 'User', name: 'owner', collection: 'Users'}
 				{label: 'Event', name: 'event', collection: 'Events', collection_property: 'title'}
+				{label: 'Start Time', name: 'startTime'}
+				{label: 'End Time', name: 'endTime'}
+				{label: 'HelpertaskType', name: 'helpertaskType()', template: 'helpertaskTypeCell'}
+				{label: '# Pers.', name: 'numPersons'}
 			]
 		}
 		Teams: {
