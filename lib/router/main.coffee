@@ -10,16 +10,7 @@ Router.map ->
         subs.subscribe 'events'
       ]
     data: ->
-      events: Events.find().fetch()
-
-  @route "eventsplan",
-    path: "/events/plan"
-    waitOn: ->
-      [
-        Meteor.subscribe 'events'
-      ]
-    data: ->
-      events: Events.find().fetch()
+      eventsData: Events.find().fetch()
 
   @route "memberimport",
     path: "/member/import"

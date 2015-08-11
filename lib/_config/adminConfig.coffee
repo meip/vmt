@@ -18,11 +18,12 @@
 			icon: 'tasks'
 			auxCollections: ['Events', 'HelpertaskTypes']
 			tableColumns: [
-				{label: 'Event', name: 'event', collection: 'Events', collection_property: 'title'}
+				{label: 'Event', name: 'event()', collection: 'Events', collection_property: 'title'}
 				{label: 'Start Time', name: 'startTime'}
 				{label: 'End Time', name: 'endTime'}
 				{label: 'HelpertaskType', name: 'helpertaskType()', template: 'helpertaskTypeCell'}
 				{label: '# Pers.', name: 'numPersons'}
+				{label: 'Owner', name: 'owner', collection: 'Users', collection_property: 'username'}
 			]
 		}
 		Teams: {

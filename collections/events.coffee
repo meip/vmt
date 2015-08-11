@@ -81,3 +81,23 @@ Events.attachSchema(Schemas.Events)
 Events.helpers
   helpertaskDescription: ->
     Helpertasks.findOne(@doc)?.description
+
+TabularTables = {}
+
+if Meteor.isClient then Template.registerHelper "TabularTables", TabularTables
+
+TabularTables.Events = new Tabular.Table
+  name: "EventsList"
+  collection: Events
+  columns: [
+    {data: "id",          title: "Event ID"}
+    {data: "title",       title: "Title"}
+    {data: "location",    title: "Locaiton"}
+    {data: "description", title: "Description"}
+    {data: "gameCode",    title: "Game Code"}
+    {data: "startDate",   title: "Start Date"}
+    {data: "endDate",     title: "End Date"}
+    {
+      tmpl: Meteor.isClient && Template.editEventButton
+    }
+  ]

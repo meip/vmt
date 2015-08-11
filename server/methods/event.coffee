@@ -17,3 +17,5 @@ Meteor.methods
 			else
 				console.log error
 			return
+	eventDelete: (event) ->
+		console.log 'delete ' + event.title

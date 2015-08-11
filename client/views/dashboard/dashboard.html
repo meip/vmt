@@ -2,7 +2,6 @@
     <div class="container">
         <div class="row" id="champion-messages">
             <div class="col-md-9">
-							{{> alert}}
 							{{> eventstemplate}}
             </div>
         </div>
@@ -10,12 +9,36 @@
 </template>
 
 <template name="eventstemplate">
-	{{#each Events}}
+  {{> autoformModals}}
+	{{#each eventsData}}
       <div class="panel panel-default">
           <div class="panel-heading">
               <h3 class="panel-title">
 								{{title}}
               </h3>
+          </div>
+          <div class="panel-body">
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                      <i class="fa fa-calendar"></i> Unlimited Events
+                  </li>
+                  <li class="list-group-item">
+                      <i class="fa fa-envelope"></i> Unlimited Email Invitations
+                  </li>
+                  <li class="list-group-item">
+                      <i class="fa fa-heart"></i> Fantastic Support
+                  </li>
+              </ul>
+              <div class="btn-group pull-right" role="group" aria-label="...">
+                  <a class="btn btn-primary" href="/event/{{_id}}/join/">Join</a>
+                  <a class="btn btn-warning" href="/event/{{_id}}/plan/">Plan</a>
+                  {{#afModal class="btn btn-warning" collection="Events" operation="update" doc=_id}}
+                      Update
+                  {{/afModal}}
+                  {{#afModal class="btn btn-danger" collection="Events" operation="remove" doc=_id}}
+                      Delete
+                  {{/afModal}}
+              </div>
           </div>
       </div>
 	{{/each}}
