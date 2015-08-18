@@ -83,3 +83,18 @@ Meteor.users.attachSchema Schemas.User
 
 # Export schemas
 @StarterSchemas = Schemas
+
+TabularTables.Members = new Tabular.Table
+  name: "MembersList"
+  collection: Meteor.users
+  columns: [
+    {data: "_id",                 title: "User ID"}
+    {data: "profile.firstName",   title: "Firstname"}
+    {data: "profile.lastName",    title: "Lastname"}
+    {data: "profile.birthday",    title: "Birthday", render: (val, type, doc) ->
+      if (val instanceof Date)
+        moment(val).calendar();
+      else
+        return val;
+    }
+  ]

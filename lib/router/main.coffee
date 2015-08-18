@@ -2,6 +2,11 @@ Router.map ->
   @route "home",
     path: "/"
     layoutTemplate: "homeLayout"
+    onBeforeAction: () ->
+      if (Meteor.userId())
+        this.redirect('dashboard')
+      else
+        this.next();
 
   @route "dashboard",
     path: "/dashboard"
@@ -23,7 +28,7 @@ Router.map ->
 
 Router.waitOn ->
   [
-    Meteor.subscribe 'user'
+    Meteor.subscribe 'users'
     Meteor.subscribe 'events'
     Meteor.subscribe 'helpertasks'
     Meteor.subscribe 'helpertaskTypes'

@@ -19,3 +19,6 @@ Meteor.methods
 			return
 	eventDelete: (event) ->
 		console.log 'delete ' + event.title
+	eventUpdate: (doc) ->
+		check(doc, Schemas.Events)
+		console.log doc

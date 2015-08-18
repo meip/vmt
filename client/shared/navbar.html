@@ -13,6 +13,7 @@
 			<div class="navbar-collapse collapse">
 				{{#if currentUser}}
 				<ul class="nav navbar-nav navbar-left">
+					<li>{{#linkTo route="dashboard"}}Home{{/linkTo}}</li>
 					{{#if isInRole 'member'}}
 						<li>
 								<a class="close-navbar" href="/helpertasks">Eigene Helfereins&auml;tze</a>

@@ -38,3 +38,12 @@ Schemas.HelpertaskTypes = new SimpleSchema
         new Date()
 
 HelpertaskTypes.attachSchema(Schemas.HelpertaskTypes)
+
+HelpertaskTypes.helpers
+  SkillsTitles: ->
+    _.reduce(_.map(this.skills, (skillId) ->
+        Skills.findOne(skillId).title),
+      (memo, title) ->
+        memo + title + ", "
+      , ''
+    )

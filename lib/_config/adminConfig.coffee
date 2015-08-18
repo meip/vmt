@@ -18,13 +18,19 @@
 			icon: 'tasks'
 			auxCollections: ['Events', 'HelpertaskTypes']
 			tableColumns: [
-				{label: 'Event', name: 'event()', collection: 'Events', collection_property: 'title'}
+				{
+					label: 'Event',
+					data: 'eventData().title',
+					collection: 'Events',
+					collection_property: 'title',
+					template: 'eventEditCell',
+				}
 				{label: 'Start Time', name: 'startTime'}
 				{label: 'End Time', name: 'endTime'}
-				{label: 'HelpertaskType', name: 'helpertaskType()', template: 'helpertaskTypeCell'}
+				{label: 'HelpertaskType', data: 'helpertaskTypeTitle()', name: 'helpertaskTypeTitle()', collection: 'HelpertaskTypes', collection_property: 'title'}
 				{label: '# Pers.', name: 'numPersons'}
-				{label: 'Owner', name: 'owner', collection: 'Users', collection_property: 'username'}
 			]
+			extraFields: ['event', 'helpertaskType', 'eventData()']
 		}
 		Teams: {
 			color: 'green'
@@ -37,11 +43,13 @@
 		HelpertaskTypes: {
 			color: 'red'
 			icon: 'pencil'
+			auxCollections: ['Skills']
 			tableColumns: [
 				{label: 'Title', name: 'title'}
 				{label: 'Description', name: 'description'}
-				{label: 'Skills', name: 'skills', collection: 'Skills', collection_property: 'title'}
+				{label: 'Skills', name: 'SkillsTitles()', collection: 'Skills', collection_property: 'title'}
 			]
+			extraFields: ['skills']
 		}
 		Skills: {
 			color: 'red'

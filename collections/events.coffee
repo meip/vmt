@@ -82,10 +82,6 @@ Events.helpers
   helpertaskDescription: ->
     Helpertasks.findOne(@doc)?.description
 
-TabularTables = {}
-
-if Meteor.isClient then Template.registerHelper "TabularTables", TabularTables
-
 TabularTables.Events = new Tabular.Table
   name: "EventsList"
   collection: Events

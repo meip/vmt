@@ -65,9 +65,7 @@ Schemas.Helpertasks = new SimpleSchema
 Helpertasks.attachSchema(Schemas.Helpertasks)
 
 Helpertasks.helpers
-  helpertaskType: ->
-    HelpertaskTypes.findOne(this.helpertaskType)
-  event: ->
+  helpertaskTypeTitle: ->
+    HelpertaskTypes.findOne(this.helpertaskType).title
+  eventData: ->
     Events.findOne(this.event)
-  ownerName: ->
-    Meteor.users.findOne(this.owner).username

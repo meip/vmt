@@ -1,0 +1,24 @@
+<template name="eventEdit">
+    <div class="container">
+        <h1>Edit event {{title}}</h1>
+        {{#autoForm collection="Events" doc=this id="editEventForm" type="method" meteormethod="eventUpdate" template="bootstrap3-horizontal"}}
+                {{> afQuickField name="title"}}
+                {{> afQuickField name="location"}}
+                {{> afQuickField name="description" rows=3}}
+                {{> afQuickField name="gameCode"}}
+                {{> afQuickField name="organizerCode"}}
+                {{> afQuickField name="startDate" type="datetime-local"}}
+                {{> afQuickField name="endDate" type="datetime-local"}}
+                {{> afQuickField name="deadlineDate" type="datetime-local"}}
+                {{> afQuickField name="owner" type="hidden"}}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+        {{/autoForm}}
+        <hr>
+
+        {{> fullcalendar fullcalendarOptions}}
+        {{#afModal class="btn btn-danger" collection="Events" operation="remove" doc=_id}}
+            Delete
+        {{/afModal}}
+    </div>
+</template>

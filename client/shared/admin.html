@@ -1,5 +1,5 @@
-<template name="helpertaskTypeCell">
-  <a href="{{pathFor 'adminDashboardHelpertaskTypeEdit' _id=doc._id}}" class="label label-default">
-    {{doc.title}}
+<template name="eventEditCell">
+    <a href="/admin/Events/{{doc.eventData._id}}/edit" class="label label-default">
+        {{doc.eventData.title}}
   </a>
 </template>
